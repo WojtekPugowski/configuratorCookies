@@ -1,2 +1,12 @@
-<h1>Hello, World!</h1>
+<h1>Configure your cookie</h1>
+
+<h2>Select cookie base</h2>
+{{#each bases}}
+        <a href="/configurator/select-base/{{this.[0]}}.png">Select {{this.[0]}} for {{this.[1]}}</a>
+{{/each}}
+
+<h2>Add your favorite addons</h2>
+{{#each addons}}
+    <a href="/configurator/add-addon/{{this.[0]}}.png">Add {{this.[0]}} for {{this.[1]}}</a>
+{{/each}}
 {{>cookie-preview}}
