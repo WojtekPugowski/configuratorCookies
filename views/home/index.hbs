@@ -1,13 +1,19 @@
 <h1>Configure your cookie</h1>
 
 <h2>Select cookie base</h2>
-{{#each bases}}
-    <a href="/configurator/select-base/{{this.[0]}}.png">Select {{this.[0]}} for {{this.[1]}}</a>
-{{/each}}
+{{>base-selector}}
 
 <h2>Add your favorite addons</h2>
 {{#each addons}}
-    <a href="/configurator/add-addon/{{this.[0]}}.png">Add {{this.[0]}} for {{this.[1]}}</a>
+    <a href="/configurator/add-addon/{{this.[0]}}">Add {{this.[0]}} for {{this.[1]}}</a>
 {{/each}}
-{{>cookie-preview}}
-{{>addones}}
+
+{{#if cookie.base}}
+    {{>cookie-preview}}
+    {{>addons}}
+{{else}}
+    <p><strong>Please select base of your cookie to see it's preview and price summary.</strong></p>
+    <p>
+        {{>base-selector}}
+    </p>
+{{/if}}
