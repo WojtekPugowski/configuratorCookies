@@ -8,8 +8,13 @@ const handlebarsHelpers = {
     return price;
   },
 
-  pricify: price => price.toFixed(2)
-}
+  pricify: price => price.toFixed(2),
+
+  isNotOnArray: (array, element) => !array.includes(element)
+
+};
+
 module.exports = {
   handlebarsHelpers,
 }
+

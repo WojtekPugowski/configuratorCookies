@@ -5,7 +5,9 @@
 
 <h2>Add your favorite addons</h2>
 {{#each addons}}
-    <a href="/configurator/add-addon/{{this.[0]}}">Add {{this.[0]}} for {{this.[1]}}</a>
+    {{#if (isNotOnArray @root.cookie.addons this.[0])}}
+        <a href="/configurator/add-addon/{{this.[0]}}">Add {{this.[0]}} for {{this.[1]}}</a>
+    {{/if}}
 {{/each}}
 
 {{#if cookie.base}}
