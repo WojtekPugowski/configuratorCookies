@@ -1,30 +1,34 @@
 const express = require('express');
-const {getAddonsFromReq} = require("../utils/get-addons-from-req");
-const {handlebarsHelpers} = require("../utils/handlebars-helpers");
-const {COOKIES_BASES, COOKIES_ADDONS} = require("../data/cookies-data");
+const {getCookieSettings} = require("../utils/get-cookie-setting");
+
 const orderRouter = express.Router();
 
 orderRouter
-  .get('/summary', (req, res) => {
-    const {cookieBase} = req.cookies;
 
-    const addons = getAddonsFromReq(req);
+    .get('/summary', (req, res) => {
+      const {sum, addons, base, allBases, allAddons} = getCookieSettings(req);
 
-    const sum = (cookieBase ? handlebarsHelpers.findPrice(Object.entries(COOKIES_BASES), cookieBase) : 0)
-      + addons.reduce((prev, curr) => {
-        return prev + handlebarsHelpers.findPrice(Object.entries(COOKIES_ADDONS), curr)
-      }, 0);
 
-    res.render('order/summary', {
-      cookie: {
-        base: cookieBase,
-        addons,
-      },
-      bases: Object.entries(COOKIES_BASES),
-      addons: Object.entries(COOKIES_ADDONS),
-      sum,
+      res.render('order/summary', {
+        cookie: {
+          base,
+          addons,
+        },
+        bases: allBases,
+        addons: allAddons,
+        sum,
+      });
     })
-  })
+    .get('/thanks', (req, res) => {
+      const {sum} = getCookieSettings(req);
+
+      res
+          .clearCookie('cookieBase')
+          .clearCookie('cookieAddons')
+          .render('order/thanks', {
+            sum,
+          })
+    });
 
 module.exports = {
   orderRouter,

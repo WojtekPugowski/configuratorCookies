@@ -43,3 +43,9 @@
     margin-right: 10px;
     vertical-align: middle;
 }
+
+.success {
+    border: 2px solid green;
+    padding: 15px;
+    background: #e6ffcd;
+}

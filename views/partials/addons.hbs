@@ -5,13 +5,11 @@
 
     {{#each cookie.addons}}
         <li>
-            {{#if noDeleteButton}}
+            {{#unless ../noDeleteButton}}
+<!--                unless - jeśli prosty warunek wystarczy użyć 'unless', jeśli potrzebujemy 'if' to musimy swtorzyć helpera 'not'-->
                 <a href="/configurator/delete-addon/{{this}}" class="btn btn-small">Delete</a>
-            {{/if}}
-            Addon: {{this}}
-            - {{pricify
-                (findPrice @root.addons this)}} PLN
-        </li>
+            {{/unless}}
+            Addon: {{this}} - {{pricify (findPrice @root.addons this)}} PLN</li>
         <!--    @root. trzeba dopisać jeśl nazwa w obiekcie jest taka sama dla właściwości jak i "podklucza" innej włąściwości.-->
     {{/each}}
 </ul>

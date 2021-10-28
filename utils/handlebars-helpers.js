@@ -12,7 +12,7 @@ const handlebarsHelpers = {
 
   isNotOnArray: (array, element) => !array.includes(element),
   isInArray: (array, element) => array.includes(element),
-
+  // not: arg => !arg,
 };
 
 module.exports = {
