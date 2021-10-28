@@ -5,14 +5,15 @@
 
 <h2>Add your favorite addons</h2>
 {{#each addons}}
-    {{#if (isNotOnArray @root.cookie.addons this.[0])}}
-        <a href="/configurator/add-addon/{{this.[0]}}">Add {{this.[0]}} for {{this.[1]}}</a>
-    {{/if}}
+    <a href="/configurator/add-addon/{{this.[0]}}" class="btn {{#if (isInArray @root.cookie.addons this.[0])}}btn-disabled {{/if}}"
+        >Add {{this.[0]}} for {{this.[1]}}</a>
+
 {{/each}}
 
 {{#if cookie.base}}
     {{>cookie-preview}}
     {{>addons}}
+    <a href="/order/summary" class="btn btn-big"><img src="/assets/images/shopping-cart.png" class="card-img" alt="">Order now</a>
 {{else}}
     <p><strong>Please select base of your cookie to see it's preview and price summary.</strong></p>
     <p>

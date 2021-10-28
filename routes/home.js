@@ -13,7 +13,7 @@ homeRouter
       const sum = (cookieBase ? handlebarsHelpers.findPrice(Object.entries(COOKIES_BASES), cookieBase) : 0)
           + addons.reduce((prev, curr) => {
             return prev + handlebarsHelpers.findPrice(Object.entries(COOKIES_ADDONS), curr)
-          }, 0)
+          }, 0);
 
       res.render('home/index', {
         cookie: {

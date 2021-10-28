@@ -10,7 +10,8 @@ const handlebarsHelpers = {
 
   pricify: price => price.toFixed(2),
 
-  isNotOnArray: (array, element) => !array.includes(element)
+  isNotOnArray: (array, element) => !array.includes(element),
+  isInArray: (array, element) => array.includes(element),
 
 };
 
