@@ -1,6 +1,6 @@
 const handlebarsHelpers = {
   findPrice: (entries, selectedItem) => {
-    const found = entries.find(item => item[0] === selectedItem);
+    const found = entries.find(el => el[0] === selectedItem);
     if (!found) {
       throw new Error(`Cannot find price of "${selectedItem}"`);
     }
